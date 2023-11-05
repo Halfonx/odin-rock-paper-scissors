@@ -4,16 +4,17 @@ let possibleChoices = ["ROCK", "PAPER", "SCISSORS"]; // An array with all the ch
 let randomIndex = Math.floor(Math.random() * 3); // Generate a random number between 0 and 2
 
 function getComputerChoice() { // Function to get the computer selection
-    computerSelection = possibleChoices[randomIndex];
-}
-
-function askPlayerChoice() {
-    playerSelection = prompt("Choose between ROCK, PAPER and SCISSORS");
-    playerSelection = playerSelection.toUpperCase();
+     computerSelection = possibleChoices[randomIndex];
 }
 
 function playRound(player, computer) { // Function who compares the player selection to the computer selection once and tells the winner
-    return "Play round";
+    if (player !== "ROCK" && player !== "PAPER" && player !== "SCISSORS") {
+        return "Please enter a correct value. Reload the page";
+    } else {
+        player = player.toUpperCase();
+        if (computer === undefined) { // If the computer selection is undefined, it calls the computer choice function and assign the value to the parameter
+            getComputerChoice();
+            computer = computerSelection;
+        }
+    }
 }
-
-computerSelection = getComputerChoice();
