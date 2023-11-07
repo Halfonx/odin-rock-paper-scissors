@@ -8,11 +8,19 @@ function getComputerChoice() { // Function to get the computer selection
      return computerSelection;
 }
 
-function playRound(player, computer) { // Function who compares the player selection to the computer selection once and tells the winner
-    let result = "";
+function resetComputerChoice() {
+    computerSelection = "";
+}
+
+function playRound() { // Function who compares the player selection to the computer selection once and tells the winner
+    let result = ""; // New variable to store the result
+    getComputerChoice();
+    let computer = computerSelection;
+    playerSelection = prompt("Choose between ROCK, PAPER or SCISSORS");
+    let player = playerSelection;
     if (player === computer) {
         return "It's a tie! Nobody wins!";
-    } else if (player === "ROCK") {
+    } else if (player === "ROCK") { // Treating all possibilities against rock
         switch (computer) {
             case "PAPER":
                 result = "Computer wins! Paper beats rock!";
@@ -21,7 +29,7 @@ function playRound(player, computer) { // Function who compares the player selec
                 result = "Player wins! Rock beats scissors!";
                 break;
         }
-    } else if (player === "PAPER") {
+    } else if (player === "PAPER") { // Treating all possibilities against paper
         switch (computer) {
             case "ROCK":
                 result = "Player wins! Paper beats rock!";
@@ -30,7 +38,7 @@ function playRound(player, computer) { // Function who compares the player selec
                 result = "Computer wins! Scissors beats paper!";
                 break;
         }
-    } else if (player === "SCISSORS") {
+    } else if (player === "SCISSORS") { // Treating all possibilities against scissors
         switch (computer) {
             case "ROCK":
                 result = "Computer wins! Rock beats scissors";
@@ -39,18 +47,8 @@ function playRound(player, computer) { // Function who compares the player selec
                 result = "Player wins! Scissors beats paper!";
                 break;
         }
-    } else {
+    } else { // Display this in cause of an error
         result = "If you are here, you entered a incorrect value. Please try again.";
     }
     return result;
 }
-
-console.log(getComputerChoice());
-console.log(playRound("ROCK"));
-console.log(playRound("ROCK", "ROCK"));
-console.log(playRound("ROCK", "PAPER"));
-console.log(playRound("ROCK", "SCISSORS"));
-console.log(playRound("PAPER", "ROCK"));
-console.log(playRound("PAPER", "SCISSORS"));
-console.log(playRound("SCISSORS", "ROCK"));
-console.log(playRound("SCISSORS", "PAPER"));
