@@ -35,23 +35,26 @@ function playRound() { // Function who compares the player selection to the comp
         result = `Player: ${player} | Computer: ${computer} | Computer wins! ${computer} beats ${player}!`;
         computerScore++;
         computerScore = computerScore; // Setting the new value to computerScore
-    }
-    return result;
+    } return result;
 }
 
 function game() { // Function to play 5 rounds in a row and display the winner
     for (i = 0; i <= 4; i++) {
         changeRandomIndex(); // Reseting the computerSelection at each new round
         playRound();
-        console.log(result);
-        console.log(`Score: Player ${playerScore} | Computer ${computerScore}`);
+        if (playerSelection !== "ROCK" && playerSelection !== "PAPER" && playerSelection !== "SCISSORS") { // Catch incorrect values and stop the game
+            return`You entered an incorrect value. Please reload the page`;
+        } else {
+            console.log(result); // Display the result of each round in the console
+            console.log(`Score: Player ${playerScore} | Computer ${computerScore}`); // Display the score of both at each round
+        } 
     }
-    let finalScore;
-    if (playerScore === computerScore) {
+    let finalScore; // New variable to store the final result
+    if (playerScore === computerScore) { // When tie game
         finalScore = `It's a tie game! Congratulations both!`;
-    } else if (playerScore > computerScore) {
+    } else if (playerScore > computerScore) { // When player wins
         finalScore = `Player wins the game!`;
-    } else {
+    } else { // When computer wins
         finalScore = `Computer wins the game!`;
     }
     return finalScore;
