@@ -8,16 +8,14 @@ function getComputerChoice() { // Function to get the computer selection
      return computerSelection;
 }
 
-function playRound() { // Function who compares the player selection to the computer selection once and tells the winner
-    let result = ""; // New variable to store the result
+function playRound(player, computer) { // Function who compares the player selection to the computer selection once and tells the winner
     getComputerChoice();
-    let computer = computerSelection;
-    playerSelection = prompt("Choose between ROCK, PAPER or SCISSORS");
-    let player = playerSelection;
+    computer = computerSelection;
     if (player === computer) {
         return "It's a tie! Nobody wins!";
     } else if (player === "ROCK" && computer === "SCISSORS" || player === "PAPER" && computer === "ROCK" || player === "SCISSORS" && computer === "PAPER") {
         return `Player wins! ${player} beats ${computer}!`;
+    } else {
+        return `Computer wins! ${computer} beats ${player}!`;
     }
-    return result;
 }
