@@ -8,10 +8,6 @@ function getComputerChoice() { // Function to get the computer selection
      return computerSelection;
 }
 
-function resetComputerChoice() {
-    computerSelection = "";
-}
-
 function playRound() { // Function who compares the player selection to the computer selection once and tells the winner
     let result = ""; // New variable to store the result
     getComputerChoice();
@@ -20,35 +16,8 @@ function playRound() { // Function who compares the player selection to the comp
     let player = playerSelection;
     if (player === computer) {
         return "It's a tie! Nobody wins!";
-    } else if (player === "ROCK") { // Treating all possibilities against rock
-        switch (computer) {
-            case "PAPER":
-                result = "Computer wins! Paper beats rock!";
-                break;
-            case "SCISSORS":
-                result = "Player wins! Rock beats scissors!";
-                break;
-        }
-    } else if (player === "PAPER") { // Treating all possibilities against paper
-        switch (computer) {
-            case "ROCK":
-                result = "Player wins! Paper beats rock!";
-                break;
-            case "SCISSORS":
-                result = "Computer wins! Scissors beats paper!";
-                break;
-        }
-    } else if (player === "SCISSORS") { // Treating all possibilities against scissors
-        switch (computer) {
-            case "ROCK":
-                result = "Computer wins! Rock beats scissors";
-                break;
-            case "PAPER":
-                result = "Player wins! Scissors beats paper!";
-                break;
-        }
-    } else { // Display this in cause of an error
-        result = "If you are here, you entered a incorrect value. Please try again.";
+    } else if (player === "ROCK" && computer === "SCISSORS" || player === "PAPER" && computer === "ROCK" || player === "SCISSORS" && computer === "PAPER") {
+        return `Player wins! ${player} beats ${computer}!`;
     }
     return result;
 }
