@@ -18,6 +18,7 @@ function changeRandomIndex() { // Function to reset the index used for the compu
 
 function askPlayerChoice() { // Function to ask the playerSelection and store the result in a variable used after
     playerSelection = prompt("Choose between ROCK, PAPER and SCISSORS");
+    playerSelection = playerSelection.toUpperCase();
 }
 
 function playRound() { // Function who compares the player selection to the computer selection once and tells the winner
