@@ -16,16 +16,23 @@ function changeRandomIndex() { // Function to reset the index used for the compu
     randomIndex = Math.floor(Math.random() * 3);
 }
 
-function askPlayerChoice() { // Function to ask the playerSelection and store the result in a variable used after
+/* function askPlayerChoice() { // Function to ask the playerSelection and store the result in a variable used after
     playerSelection = prompt("Choose between ROCK, PAPER and SCISSORS");
     playerSelection = playerSelection.toUpperCase();
 }
+*/
+
+const rockButton = document.querySelector('#rock-button');
+const paperButton = document.querySelector('#paper-button');
+const scissorsButton = document.querySelector('#scissors-button');
 
 function playRound() { // Function who compares the player selection to the computer selection once and tells the winner
     getComputerChoice();
-    askPlayerChoice();
+    // askPlayerChoice();
     let computer = computerSelection;
-    let player = playerSelection;
+    let player = rockButton.value;
+    player = player.toUpperCase();
+    console.log(player);
     if (player === computer) { // Cases for when the two parameters are equal
         result = `Player: ${player} | Computer: ${computer} | It's a tie! Nobody wins!`;
     } else if (player === "ROCK" && computer === "SCISSORS" || player === "PAPER" && computer === "ROCK" || player === "SCISSORS" && computer === "PAPER") { // Cases when the player wins
@@ -36,9 +43,11 @@ function playRound() { // Function who compares the player selection to the comp
         result = `Player: ${player} | Computer: ${computer} | Computer wins! ${computer} beats ${player}!`;
         computerScore++;
         computerScore = computerScore; // Setting the new value to computerScore
-    } return result;
+    }
+    console.log(result);
 }
 
+/*
 function game() { // Function to play 5 rounds in a row and display the winner
     for (i = 0; i <= 4; i++) {
         changeRandomIndex(); // Reseting the computerSelection at each new round
@@ -60,3 +69,6 @@ function game() { // Function to play 5 rounds in a row and display the winner
     }
     return finalScore;
 }
+*/
+
+rockButton.addEventListener('click', playRound);
