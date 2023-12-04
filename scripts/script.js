@@ -30,7 +30,7 @@ function playRound() { // Function who compares the player selection to the comp
     getComputerChoice();
     // askPlayerChoice();
     let computer = computerSelection;
-    let player = rockButton.value;
+    let player = playerSelection;
     player = player.toUpperCase();
     console.log(player);
     if (player === computer) { // Cases for when the two parameters are equal
@@ -71,4 +71,24 @@ function game() { // Function to play 5 rounds in a row and display the winner
 }
 */
 
-rockButton.addEventListener('click', playRound);
+const divResult = document.querySelector('#result-div');
+const buttons = document.querySelectorAll('.button');
+
+buttons.forEach((button) => { // This part is needed when you want to use the same event listener to multiples elements
+    button.addEventListener('click', function(event) {
+        switch (event.target.value) {
+            case 'rock' :
+                playerSelection = 'ROCK';
+                break;
+            case 'paper' :
+                playerSelection = 'PAPER';
+                break;
+            case 'scissors' :
+                playerSelection = 'SCISSORS';
+                break;
+            default :
+                break;    
+        }
+        console.log(playerSelection);
+    });
+})
