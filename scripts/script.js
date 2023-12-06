@@ -43,6 +43,7 @@ buttons.forEach((button) => { // This part is needed when you want to use the sa
             default :
                 break;    
         }
+        changeRandomIndex();
         playRound();
         divResult.textContent = result;
     });
