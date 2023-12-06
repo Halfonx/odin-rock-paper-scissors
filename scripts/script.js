@@ -25,6 +25,28 @@ function changeRandomIndex() { // Function to reset the index used for the compu
 const rockButton = document.querySelector('#rock-button');
 const paperButton = document.querySelector('#paper-button');
 const scissorsButton = document.querySelector('#scissors-button');
+const divResult = document.querySelector('#result');
+const buttons = document.querySelectorAll('.button');
+
+buttons.forEach((button) => { // This part is needed when you want to use the same event listener to multiples elements
+    button.addEventListener('click', function(event) {
+        switch (event.target.value) {
+            case 'rock' :
+                playerSelection = 'ROCK';
+                break;
+            case 'paper' :
+                playerSelection = 'PAPER';
+                break;
+            case 'scissors' :
+                playerSelection = 'SCISSORS';
+                break;
+            default :
+                break;    
+        }
+        playRound();
+        divResult.textContent = result;
+    });
+})
 
 function playRound() { // Function who compares the player selection to the computer selection once and tells the winner
     getComputerChoice();
@@ -32,7 +54,6 @@ function playRound() { // Function who compares the player selection to the comp
     let computer = computerSelection;
     let player = playerSelection;
     player = player.toUpperCase();
-    console.log(player);
     if (player === computer) { // Cases for when the two parameters are equal
         result = `Player: ${player} | Computer: ${computer} | It's a tie! Nobody wins!`;
     } else if (player === "ROCK" && computer === "SCISSORS" || player === "PAPER" && computer === "ROCK" || player === "SCISSORS" && computer === "PAPER") { // Cases when the player wins
@@ -44,7 +65,6 @@ function playRound() { // Function who compares the player selection to the comp
         computerScore++;
         computerScore = computerScore; // Setting the new value to computerScore
     }
-    console.log(result);
 }
 
 /*
@@ -70,26 +90,3 @@ function game() { // Function to play 5 rounds in a row and display the winner
     return finalScore;
 }
 */
-
-const divResult = document.querySelector('#result');
-const buttons = document.querySelectorAll('.button');
-
-buttons.forEach((button) => { // This part is needed when you want to use the same event listener to multiples elements
-    button.addEventListener('click', function(event) {
-        switch (event.target.value) {
-            case 'rock' :
-                playerSelection = 'ROCK';
-                break;
-            case 'paper' :
-                playerSelection = 'PAPER';
-                break;
-            case 'scissors' :
-                playerSelection = 'SCISSORS';
-                break;
-            default :
-                break;    
-        }
-        console.log(playerSelection);
-        divResult.textContent = playerSelection;
-    });
-})
