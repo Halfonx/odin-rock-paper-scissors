@@ -19,25 +19,6 @@ function changeRandomIndex() { // Function to reset the index used for the compu
 const divResult = document.querySelector('#result');
 const buttons = document.querySelectorAll('.button');
 
-function playRound() { // Function who compares the player selection to the computer selection once and tells the winner
-    getComputerChoice();
-    let computer = computerSelection;
-    let player = playerSelection;
-    player = player.toUpperCase();
-    if (player === computer) { // Cases for when the two parameters are equal
-        result = `Player: ${player} | Computer: ${computer} | It's a tie! Nobody wins!`;
-    } else if (player === "ROCK" && computer === "SCISSORS" || player === "PAPER" && computer === "ROCK" || player === "SCISSORS" && computer === "PAPER") { // Cases when the player wins
-        result = `Player: ${player} | Computer: ${computer} | Player wins! ${player} beats ${computer}!`;
-        playerScore++;
-        playerScore = playerScore; // Setting the new value to playerScore
-    } else { // Cases when the computer wins
-        result = `Player: ${player} | Computer: ${computer} | Computer wins! ${computer} beats ${player}!`;
-        computerScore++;
-        computerScore = computerScore; // Setting the new value to computerScore
-    }
-    return result;
-}
-
 buttons.forEach((button) => { // This part is needed when you want to use the same event listener to multiples elements
     button.addEventListener('click', function(event) {
         switch (event.target.value) {
@@ -57,7 +38,9 @@ buttons.forEach((button) => { // This part is needed when you want to use the sa
         playRound();
         divResult.textContent = `${result} Score : Player ${playerScore} | Computer ${computerScore}`;
     });
+    buttons.disabled = true;
 })
+
 
 /*
 function game() { // Function to play 5 rounds in a row and display the winner
