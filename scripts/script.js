@@ -71,7 +71,7 @@ function game() { // Function to play 5 rounds in a row and display the winner
 }
 */
 
-const divResult = document.querySelector('#result-div');
+const divResult = document.querySelector('#result');
 const buttons = document.querySelectorAll('.button');
 
 buttons.forEach((button) => { // This part is needed when you want to use the same event listener to multiples elements
@@ -90,5 +90,6 @@ buttons.forEach((button) => { // This part is needed when you want to use the sa
                 break;    
         }
         console.log(playerSelection);
+        divResult.textContent = playerSelection;
     });
 })
