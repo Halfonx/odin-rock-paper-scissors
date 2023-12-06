@@ -16,12 +16,6 @@ function changeRandomIndex() { // Function to reset the index used for the compu
     randomIndex = Math.floor(Math.random() * 3);
 }
 
-/* function askPlayerChoice() { // Function to ask the playerSelection and store the result in a variable used after
-    playerSelection = prompt("Choose between ROCK, PAPER and SCISSORS");
-    playerSelection = playerSelection.toUpperCase();
-}
-*/
-
 const rockButton = document.querySelector('#rock-button');
 const paperButton = document.querySelector('#paper-button');
 const scissorsButton = document.querySelector('#scissors-button');
@@ -51,7 +45,6 @@ buttons.forEach((button) => { // This part is needed when you want to use the sa
 
 function playRound() { // Function who compares the player selection to the computer selection once and tells the winner
     getComputerChoice();
-    // askPlayerChoice();
     let computer = computerSelection;
     let player = playerSelection;
     player = player.toUpperCase();
