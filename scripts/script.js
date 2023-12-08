@@ -60,6 +60,12 @@ buttons.forEach((button) => { // This part is needed when you want to use the sa
             rockButton.disabled = true;
             paperButton.disabled = true;
             scissorsButton.disabled = true;
+            if (playerScore == 5) {
+                divResult.textContent = 'Player won!';
+            };
+            if (computerScore == 5) {
+                divResult.textContent = 'Computer won!';
+            }
         } else {
             changeRandomIndex();
             playRound();
