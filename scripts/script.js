@@ -5,6 +5,9 @@ let randomIndex = Math.floor(Math.random() * 3); // Generate a random number bet
 let result = "";
 let playerScore = 0; // Initialising the player score
 let computerScore = 0; // Initialising the computer score
+const rockButton = document.querySelector('#rock-button');
+const paperButton = document.querySelector('#paper-button');
+const scissorsButton = document.querySelector('#scissors-button');
 
 function getComputerChoice() { // Function to get the computer selection
      computerSelection = possibleChoices[randomIndex];
@@ -52,10 +55,16 @@ buttons.forEach((button) => { // This part is needed when you want to use the sa
                 break;
             default :
                 break;    
+        };
+        if (playerScore >= 5 || computerScore >= 5) {
+            rockButton.disabled = true;
+            paperButton.disabled = true;
+            scissorsButton.disabled = true;
+        } else {
+            changeRandomIndex();
+            playRound();
+            divResult.textContent = `${result} Score : Player ${playerScore} | Computer ${computerScore}`;
         }
-        changeRandomIndex();
-        playRound();
-        divResult.textContent = `${result} Score : Player ${playerScore} | Computer ${computerScore}`;
     });
 })
 
