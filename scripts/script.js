@@ -28,17 +28,38 @@ function playRound() { // Function who compares the player selection to the comp
     let player = playerSelection;
     player = player.toUpperCase();
     if (player === computer) { // Cases for when the two parameters are equal
-        result = `Player: ${player} | Computer: ${computer} | It's a tie! Nobody wins!`;
+        result = `Player: ${player} | Computer: ${computer}
+        It's a tie! Nobody wins!`;
     } else if (player === "ROCK" && computer === "SCISSORS" || player === "PAPER" && computer === "ROCK" || player === "SCISSORS" && computer === "PAPER") { // Cases when the player wins
-        result = `Player: ${player} | Computer: ${computer} | Player wins! ${player} beats ${computer}!`;
+        result = `Player: ${player} | Computer: ${computer}
+        Player wins! ${player} beats ${computer}!`;
         playerScore++;
         playerScore = playerScore; // Setting the new value to playerScore
     } else { // Cases when the computer wins
-        result = `Player: ${player} | Computer: ${computer} | Computer wins! ${computer} beats ${player}!`;
+        result = `Player: ${player} | Computer: ${computer}
+        Computer wins! ${computer} beats ${player}!`;
         computerScore++;
         computerScore = computerScore; // Setting the new value to computerScore
     }
     return result;
+}
+
+function endGame(playerScore, computerScore) {
+    if (playerScore >= 5 || computerScore >= 5) {
+        rockButton.disabled = true;
+        paperButton.disabled = true;
+        scissorsButton.disabled = true;
+        if (playerScore == 5) {
+            divResult.textContent = `${result}
+            Score : Player ${playerScore} | Computer ${computerScore}
+            Player won!`;
+        };
+        if (computerScore == 5) {
+            divResult.textContent = `${result}
+            Score : Player ${playerScore} | Computer ${computerScore}
+            Computer won!`;
+        }
+    }
 }
 
 buttons.forEach((button) => { // This part is needed when you want to use the same event listener to multiples elements
@@ -56,21 +77,12 @@ buttons.forEach((button) => { // This part is needed when you want to use the sa
             default :
                 break;    
         };
-        if (playerScore >= 5 || computerScore >= 5) {
-            rockButton.disabled = true;
-            paperButton.disabled = true;
-            scissorsButton.disabled = true;
-            if (playerScore == 5) {
-                divResult.textContent = 'Player won!';
-            };
-            if (computerScore == 5) {
-                divResult.textContent = 'Computer won!';
-            }
-        } else {
-            changeRandomIndex();
-            playRound();
-            divResult.textContent = `${result} Score : Player ${playerScore} | Computer ${computerScore}`;
-        }
+        changeRandomIndex();
+        playRound();
+        divResult.textContent = `${result}
+        Score : Player ${playerScore} | Computer ${computerScore}`;
+        endGame(playerScore, computerScore);
+
     });
 })
 
