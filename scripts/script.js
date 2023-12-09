@@ -81,7 +81,7 @@ buttons.forEach((button) => { // This part is needed when you want to use the sa
         playRound();
         divResult.textContent = `${result}
         Score : Player ${playerScore} | Computer ${computerScore}`;
-        endGame(playerScore, computerScore);
+        endGame(playerScore, computerScore); // Calling this function here at every click disable the 3 buttons when one score reaches 5
 
     });
 })
