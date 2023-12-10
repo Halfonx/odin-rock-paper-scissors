@@ -1,3 +1,4 @@
+/* ----- VARIABLES ----- */
 let playerSelection; // Variable to store the player selection
 let computerSelection; // Variable to store the computer selection
 let possibleChoices = ["ROCK", "PAPER", "SCISSORS"]; // An array with all the choices the computer can have
@@ -5,10 +6,14 @@ let randomIndex = Math.floor(Math.random() * 3); // Generate a random number bet
 let result = "";
 let playerScore = 0; // Initialising the player score
 let computerScore = 0; // Initialising the computer score
+const divResult = document.querySelector('#result');
+const buttons = document.querySelectorAll('.button');
 const rockButton = document.querySelector('#rock-button');
 const paperButton = document.querySelector('#paper-button');
 const scissorsButton = document.querySelector('#scissors-button');
 
+
+/* ----- FUNCTIONS ----- */
 function getComputerChoice() { // Function to get the computer selection
      computerSelection = possibleChoices[randomIndex];
      return computerSelection;
@@ -18,9 +23,6 @@ function changeRandomIndex() { // Function to reset the index used for the compu
     randomIndex = "";
     randomIndex = Math.floor(Math.random() * 3);
 }
-
-const divResult = document.querySelector('#result');
-const buttons = document.querySelectorAll('.button');
 
 function playRound() { // Function who compares the player selection to the computer selection once and tells the winner
     getComputerChoice();
