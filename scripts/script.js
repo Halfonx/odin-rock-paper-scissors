@@ -82,30 +82,5 @@ buttons.forEach((button) => { // This part is needed when you want to use the sa
         divResult.textContent = `${result}
         Score : Player ${playerScore} | Computer ${computerScore}`;
         endGame(playerScore, computerScore); // Calling this function here at every click disable the 3 buttons when one score reaches 5
-
     });
 })
-
-/*
-function game() { // Function to play 5 rounds in a row and display the winner
-    for (i = 0; i <= 4; i++) {
-        changeRandomIndex(); // Reseting the computerSelection at each new round
-        playRound();
-        if (playerSelection !== "ROCK" && playerSelection !== "PAPER" && playerSelection !== "SCISSORS") { // Catch incorrect values and stop the game
-            return`You entered an incorrect value. Please reload the page`;
-        } else {
-            console.log(result); // Display the result of each round in the console
-            console.log(`Score: Player ${playerScore} | Computer ${computerScore}`); // Display the score of both at each round
-        } 
-    }
-    let finalScore; // New variable to store the final result
-    if (playerScore === computerScore) { // When tie game
-        finalScore = `It's a tie game! Congratulations both!`;
-    } else if (playerScore > computerScore) { // When player wins
-        finalScore = `Player wins the game!`;
-    } else { // When computer wins
-        finalScore = `Computer wins the game!`;
-    }
-    return finalScore;
-}
-*/
