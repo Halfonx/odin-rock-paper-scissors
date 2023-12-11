@@ -11,6 +11,7 @@ const buttons = document.querySelectorAll('.button');
 const rockButton = document.querySelector('#rock-button');
 const paperButton = document.querySelector('#paper-button');
 const scissorsButton = document.querySelector('#scissors-button');
+const resetButton = document.querySelector('#reset-button');
 
 
 /* ----- FUNCTIONS ----- */
@@ -85,4 +86,13 @@ buttons.forEach((button) => { // This part is needed when you want to use the sa
         Score : Player ${playerScore} | Computer ${computerScore}`;
         endGame(playerScore, computerScore); // Calling this function here at every click disable the 3 buttons when one score reaches 5
     });
+})
+
+resetButton.addEventListener('click', () => {
+    divResult.textContent = "";
+    playerScore = 0;
+    computerScore = 0;
+    rockButton.disabled = false;
+    paperButton.disabled = false;
+    scissorsButton.disabled = false;
 })
