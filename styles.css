@@ -5,7 +5,7 @@ body {
     padding: 16px;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
-    background-color: darkslategray;
+    background-color: white;
 }
 
 div {
@@ -13,16 +13,22 @@ div {
 }
 
 button {
-    height: 36px;
-    min-width: 64px;
-    padding: 8px 16px;
+    padding: 16px 32px;
     border-radius: 10px;
-    border: 1px solid grey;
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    font-weight: bold;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     font-size: 18px;
+    transition-duration: 0.2s;
+}
+button:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
 }
 
 #buttons {
@@ -39,7 +45,21 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: tan;
-    border: 1px solid grey;
+    background-color: black;
+    color: white;
+    border: 3px solid black;
     border-radius: 10px;
+    font-size: 22px;
+}
+
+@media all and (hover: hover) {
+    button:disabled:hover {
+        background-color: white;
+        color: black;
+    }
+    
+    button:hover {
+        color: white;
+        background-color: black;
+    }
 }
